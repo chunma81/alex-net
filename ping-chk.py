@@ -10,3 +10,4 @@ with open('checklists.txt', 'r') as f:
         else:
             print(ip, "is REACHABLE")
 
+# this is test
