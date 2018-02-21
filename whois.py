@@ -1,15 +1,17 @@
 #!/usr/bin/python2.7
-import os
+import subprocess
+
 
 def WHOIS_AS():
     ASN = raw_input("AS Number: ")
-    bashcommand = "whois -h whois.cymru.com AS"+ASN
-    os.system (bashcommand)
+    bashcmd1 = "whois -h whois.cymru.com AS"+ASN
+    subprocess.call(bashcmd1, shell=True)
 
 def WHOIS_IP():
     IP = raw_input("IPv4 Address: ")
-    bashcommand = "whois -h whois.cymru.com "+IP
-    os.system (bashcommand)
+    bashcmd2 = "whois -h whois.cymru.com "+IP
+    subprocess.call(bashcmd2, shell=True)
+
 
 print("############# Select Mode #################")
 print("### [1] Whois ASN [2] Whois IP [3] EXIT ###")
