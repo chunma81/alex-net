@@ -10,6 +10,7 @@ print "############################ [Checking] ###############################"
 subprocess.call ("/home/alex/CHK_TRAFFIC.sh" , shell=True)
 
 print "########################### [Feedback] ################################"
+
 result = subprocess.check_output ("cat /home/alex/CHK_TRAFFIC.log |egrep 'Out|In' |awk '$4 > 7000000000 {print $4}'" , shell=True)
 
 retmsg_T = ""
@@ -20,6 +21,8 @@ if result:
 else:
     retmsg_T = "No Traffic issue until now"
     print "No Traffic issue until now"
+
+print "################################ [End] ##################################"
 
 result_file = "/home/alex/CHK_TRAFFIC.log"
 fp = open(result_file, 'rb')
