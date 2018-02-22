@@ -8,7 +8,7 @@ print "############################ [Starting] ###############################"
 print "Removing OLD Log files and the Notification Email will be sent soon"
 print "############################ [Checking] ###############################"
 
-subprocess.call (“/home/alex/CHK_LINK_STATUS.sh" , shell=True)
+subprocess.call ("/home/alex/CHK_LINK_STATUS.sh" , shell=True)
 
 print "\n########################### [Feedback] ##############################"
 
@@ -30,7 +30,7 @@ else:
 
 print "################################ [End] ##################################"
 
-result_file = “/home/alex/CHK_LINK_STATUS.log"
+result_file = "/home/alex/CHK_LINK_STATUS.log"
 fp = open(result_file, 'rb')
 
 strmsg = fp.read()
@@ -39,11 +39,11 @@ strmsg += "\n" + retmsg_HK
 
 msg = MIMEText( strmsg  )
 
-gmail_user = “alex@gmail.com"
-gmail_pwd = “alex123"
+gmail_user = "alex@gmail.com"
+gmail_pwd = "alex123"
 
-me = ‘alex@gmail.com'
-you = ‘alex@yahoo.com'
+me = 'alex@gmail.com'
+you = 'alex@yahoo.com'
 
 msg['Subject'] = '[Automation][Uplink] %s' % retmsg_HK
 msg['From'] = me
