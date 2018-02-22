@@ -10,7 +10,7 @@ print "############################ [Checking] ###############################"
 subprocess.call ("/home/alex/CHK_TRAFFIC.sh" , shell=True)
 
 print "########################### [Feedback] ################################"
-result = subprocess.check_output ("cat /data/alex/CHK_TRAFFIC.log |egrep 'Out|In' |awk '$4 > 7000000000 {print $4}'" , shell=True)
+result = subprocess.check_output ("cat /home/alex/CHK_TRAFFIC.log |egrep 'Out|In' |awk '$4 > 7000000000 {print $4}'" , shell=True)
 
 retmsg_T = ""
 
