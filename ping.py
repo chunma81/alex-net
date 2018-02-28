@@ -1,5 +1,4 @@
 #!/usr/bin/python2.7
-import os
 import subprocess
 
 
@@ -34,4 +33,4 @@ elif Menu == "2" :
 elif Menu == "2" :
     pass
 else:
-    print("Plaese Select")
+    print("Exit!Plaese try to Select")
