@@ -5,28 +5,28 @@ import subprocess
 def UDP_OT():
     SW1 = raw_input("Switch IP address: ")
     UDP = raw_input("UDP Port Number: ")
-    result1 = subprocess.Popen(["nc", "-uzv", SW1, UDP, "-w", "3"],stdout=subprocess.PIPE)
-    print result1.communicate()[0]
+    result = subprocess.Popen(["nc", "-uzv", SW1, UDP, "-w", "3"],stdout=subprocess.PIPE)
+    print result.communicate()[0]
 
 def TCP_OT():
     SW2 = raw_input("Switch IP address: ")
     TCP = raw_input("TCP Port Number: ")
-    result2 = subprocess.Popen(["nc", "-zv", SW2, TCP, "-w", "3"],stdout=subprocess.PIPE)
-    print result2.communicate()[0]
+    result = subprocess.Popen(["nc", "-zv", SW2, TCP, "-w", "3"],stdout=subprocess.PIPE)
+    print result.communicate()[0]
 
 def UDP_LIST():
     UDP = raw_input("UDP Port Number: ")    
     with open('portchklists.txt', 'r') as f:
         for SWL in f:
-            result3 = subprocess.Popen(["nc", "-uzv", SWL.replace("\n",""), UDP, "-w", "3"],stdout=subprocess.PIPE)
-            print result3.communicate()[0]
+            result = subprocess.Popen(["nc", "-uzv", SWL.replace("\n",""), UDP, "-w", "3"],stdout=subprocess.PIPE)
+            print result.communicate()[0]
 
 def TCP_LIST():
     TCP = raw_input("TCP Port Number: ")
     with open('portchklists.txt', 'r') as f:
         for SWL in f:
-            result4 = subprocess.Popen(["nc", "-zv", SWL.replace("\n",""), TCP, "-w", "3"],stdout=subprocess.PIPE)
-            print result4.communicate()[0]
+            result = subprocess.Popen(["nc", "-zv", SWL.replace("\n",""), TCP, "-G", "1", "-w", "3"],stdout=subprocess.PIPE)
+            print result.communicate()[0]
 
 
 print("########################################### Select Mode ######################################################")
