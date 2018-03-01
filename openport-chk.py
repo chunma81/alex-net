@@ -3,15 +3,15 @@ import subprocess
 
 
 def UDP_OT():
-    SW1 = raw_input("Switch IP address: ")
+    SW = raw_input("Switch IP address: ")
     UDP = raw_input("UDP Port Number: ")
-    result = subprocess.Popen(["nc", "-uzv", SW1, UDP, "-w", "3"],stdout=subprocess.PIPE)
+    result = subprocess.Popen(["nc", "-uzv", SW, UDP, "-w", "3"],stdout=subprocess.PIPE)
     print result.communicate()[0]
 
 def TCP_OT():
-    SW2 = raw_input("Switch IP address: ")
+    SW = raw_input("Switch IP address: ")
     TCP = raw_input("TCP Port Number: ")
-    result = subprocess.Popen(["nc", "-zv", SW2, TCP, "-w", "3"],stdout=subprocess.PIPE)
+    result = subprocess.Popen(["nc", "-zv", SW, TCP, "-w", "3"],stdout=subprocess.PIPE)
     print result.communicate()[0]
 
 def UDP_LIST():
