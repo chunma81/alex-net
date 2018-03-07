@@ -4,25 +4,31 @@ import subprocess
 
 def WHOIS_AS():
     ASN = raw_input("AS Number: ")
-    bashcmd1 = "whois -h whois.cymru.com AS"+ASN
-    subprocess.call(bashcmd1, shell=True)
+    bashcmd = "whois -h whois.cymru.com AS"+ASN
+    subprocess.call(bashcmd, shell=True)
 
 def WHOIS_IP():
     IP = raw_input("IPv4 Address: ")
-    bashcmd2 = "whois -h whois.cymru.com "+IP
-    subprocess.call(bashcmd2, shell=True)
+    bashcmd = "whois -h whois.cymru.com "+IP
+    subprocess.call(bashcmd, shell=True)
 
+def RADB_BL():
+    IP = raw_input("IPv4 Block Address: ")
+    bashcmd = "whois -h whois.radb.net "+IP
+    subprocess.call(bashcmd, shell=True)
 
-print("############# Select Mode #################")
-print("### [1] Whois ASN [2] Whois IP [3] EXIT ###")
-print("###########################################")
+print("######################## Select Mode #########################")
+print("### [1] Whois ASN [2] Whois IP [3] RADB.NET BLOCK [4] EXIT ###")
+print("##############################################################")
 Menu = raw_input("Enter Number of Mode: ")
 if Menu == "1" :
     WHOIS_AS()
 elif Menu == "2" :
     WHOIS_IP()
 elif Menu == "3" :
+    RADB_BL()
+elif Menu == "4" :
     pass
 else:
-    print("Plaese Select")
+    print("Exit!Plaese try to Select")
 
