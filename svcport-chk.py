@@ -28,10 +28,16 @@ def TCP_LIST():
             result = subprocess.Popen(["nc", "-zv", SWL.replace("\n",""), TCP, "-G", "1", "-w", "3"],stdout=subprocess.PIPE)
             print result.communicate()[0]
 
+def NMAP_OT():
+    SW = raw_input("Switch IP address: ")
+    print "It will take some time to search an openning ports. Please wait for 30 seconds"
+    result = subprocess.Popen(["sudo", "nmap", "-sT", "-sU", SW, "--host-timeout", "30"],stdout=subprocess.PIPE)
+    print result.communicate()[0]
 
-print("########################################### Select Mode ######################################################")
-print("###  [1] UDP Check    [2] TCP Check    [3] UDP Check for SWlists    [4] TCP Check for SWlists    [5] EXIT  ###")
-print("##############################################################################################################")
+
+print("############################################ Select Mode ##################################################")
+print("###  [1] NC UDP  [2] NC TCP  [3] NC UDP for lists  [4] NC TCP for lists  [5] NMAP Open ports  [6] EXIT  ###")
+print("###########################################################################################################")
 Menu = raw_input("Enter Number of Mode: ")
 if Menu == "1" :
     UDP_OT()
@@ -42,6 +48,8 @@ elif Menu == "3" :
 elif Menu == "4" :
     TCP_LIST()
 elif Menu == "5" :
+    NMAP_OT()
+elif Menu == "6" :
     pass
 else:
     print("Exit!Plaese try to Select")
