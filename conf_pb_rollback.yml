@@ -1,0 +1,37 @@
+---
+- name: Configure Device
+  hosts : vMX 
+  connection: local
+  gather_facts: no
+  roles:
+  - Juniper.junos
+
+  vars_prompt:
+  - name: USERNAME
+    prompt: Username
+    private: no
+  - name: DEVICE_PASSWORD
+    prompt: Password
+    private: yes
+
+  tasks:
+   - name: Checking NETCONF connectivity
+     wait_for:
+       host: "{{ inventory_hostname }}"
+       port: 830
+       timeout: 5
+
+   - name: Rollback configuration of device 
+     junos_rollback:
+       host: "{{ inventory_hostname }}"
+       user: "{{ USERNAME }}"
+       passwd: "{{ DEVICE_PASSWORD }}"
+       diffs_file: rollback.diff
+       logfile: rollback.log
+       rollback: 2 
+       comment: "Rollback 2 by Ansible"
+     register : response
+
+   - name: Print a reault and response 
+     debug:
+       var: response
