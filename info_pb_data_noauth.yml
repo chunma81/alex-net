@@ -32,6 +32,6 @@
      register: junos
 
    - name : Print basic data
-     debug: msg="MODEL {{ junos.facts.mode }} | JunOS {{ junos.facts.version }} | SN {{ junos.facts.serialnumber }}"
+     debug: msg="MODEL {{ junos.facts.model }} | JunOS {{ junos.facts.version }} | SN {{ junos.facts.serialnumber }}"
 #     debug:
 #       var: junos
