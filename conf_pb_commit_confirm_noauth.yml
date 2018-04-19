@@ -1,0 +1,43 @@
+---
+- name: Configure Device
+  hosts : vMX 
+  connection: local
+  gather_facts: no
+  roles:
+  - Juniper.junos
+
+#  vars_prompt:
+#  - name: USERNAME
+#    prompt: Username
+#    private: no
+#  - name: DEVICE_PASSWORD
+#    prompt: Password
+#    private: yes
+
+  tasks:
+   - name: Checking NETCONF connectivity
+     wait_for:
+       host: "{{ inventory_hostname }}"
+       port: 830
+       timeout: 5
+
+   - name: Load a configuration file and Push it to running JunOS devices 
+     junos_install_config:
+       host: "{{ inventory_hostname }}"
+       user: "{{ juniper_user }}"
+       port: "{{ juniper_port }}"
+#       user: "{{ USERNAME }}"
+#       passwd: "{{ DEVICE_PASSWORD }}"
+       replace: no
+       overwrite: no
+       comment: "Commit confirmed by Ansible"
+       confirm: 2
+       diffs_file: commit_confirm.diff       
+       logfile: commit_confirm.log     
+       file: snmpconf.set
+     register: response
+
+   - name: Print a result 
+     debug:
+       var: response
+
